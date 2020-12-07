@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
     has_many :shows 
     has_secure_password
-    validates #active record validation
+    validates :email, uniqueness: true
 
     def slug
         slug = self.username.downcase.split(" ")
