@@ -8,4 +8,4 @@ Show.new(title: "test show", network: "network1", imdb_url: "https://www.imdb.co
 
 Show.new(title: "Schitt’s Creek", network: "CBC", imdb_url: "https://www.imdb.com/title/tt3526078/", year: "2015", summary: "When rich video-store magnate Johnny Rose and his family suddenly find themselves broke, they are forced to leave their pampered lives to regroup in Schitt's Creek.", user_id: user_l)
 
-Show.new(title: "Brooklyn Nine-Nine", network: "NBC", imdb_url: "https://www.imdb.com/title/tt2467372/" year: "2013", summary: "Brooklyn Nine-Nine follows the exploits of hilarious Det. Jake Peralta and his diverse, lovable colleagues as they police the NYPD's 99th Precinct.", user_id: user_m)
+Show.new(title: "Brooklyn Nine-Nine", network: "NBC", imdb_url: "https://www.imdb.com/title/tt2467372/" year: "2013", summary: "Brooklyn Nine-Nine follows the exploits of hilarious Det. Jake Peralta and his dive.")

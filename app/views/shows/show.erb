@@ -1,5 +1,15 @@
 <h1><%= @show.title %></h1>
 
-<h2>Is it queer? <strong<%= show.queerness %><strong></h2>
+Year first aired: <%= @show.year %><br>
+Network: <%= @show.network %><br>
+Summary: <%= @show.summary %><br>
+IMdb page: <%= @show.imdb_url %><br>
 
-<a href="/shows/edit">Edit</a>
+<% if @show.user.id == session[:user_id] %>
+<a href="/tweets/<%= @tweet.id %>/edit">Edit Tweet</a><br>
+
+<form method="POST" action="/shows/<%= @show.id %>/delete">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Tweet">
+</form>
+<% end %>
