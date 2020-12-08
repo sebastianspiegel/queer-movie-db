@@ -1,5 +1,7 @@
 class Movie < ActiveRecord::Base
     belongs_to :user
+    validates :title, uniqueness: true, presence: true
+
 
     def slug
         slug = self.username.downcase.split(" ")

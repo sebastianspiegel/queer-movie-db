@@ -1,6 +1,10 @@
 <h1>Add a Movie</h1>
  <!-- # title, imdb_url, year, summary, network -->
 
+ <% if flash(:message) %>
+  <%= flash[:message] %>
+<% end %> 
+
 <form method="POST" action="/movies">
     Title: <input type="text" name="title"><br>
     Year: <input type="text" name="year"><br>

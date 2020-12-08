@@ -11,10 +11,11 @@ class MoviesController < ApplicationController
 
     post '/movies' do
         redirect_if_not_logged_in
-        if params[:title].blank? || Movie.find_by_title(params[:title])
+        @movie = Movie.new(params)
+        if @movie.invalid?
+            flash[:message] = "That movie already exists in this database."
             redirect '/movies/new'
         else
-            @movie = Movie.create(params)
             @movie.user = current_user
             @movie.save
             redirect "/movies/#{@movie.id}"
