@@ -27,12 +27,14 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        u = User.new(params)
-        if u.password.blank? || u.username.blank? || User.find_by_username(params[:username])
+        #is user savable? 
+        user = User.new(params)
+        #user.password.blank? || user.username.blank? || User.find_by_username(params[:username])
+        if user.invalid?
             redirect '/signup'
         else
-            u.save 
-            session[:user_id] = u.id
+            user.save 
+            session[:user_id] = user.id
             redirect '/'
         end
     end

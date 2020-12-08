@@ -10,6 +10,7 @@ class MoviesController < ApplicationController
     end
 
     post '/movies' do
+        redirect_if_not_logged_in
         if params[:title].blank? || Movie.find_by_title(params[:title])
             redirect '/movies/new'
         else
@@ -36,6 +37,7 @@ class MoviesController < ApplicationController
     end
 
     patch '/movies/:id' do
+        #check for correct user
         redirect_if_not_logged_in
         movie = Movie.find(params[:id])
         if params.values.any? &:empty?
@@ -48,6 +50,7 @@ class MoviesController < ApplicationController
     end
 
     delete '/movies/:id/delete' do
+        #check for correct user
         redirect_if_not_logged_in
         movie = Movie.find(params[:id])
         movie.delete 
