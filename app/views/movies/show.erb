@@ -5,7 +5,7 @@ Year: <%= @movie.year %><br>
 Summary: <%= @movie.summary %><br><br>
 
 <% if @movie.user_id == session[:user_id] %>
-<a href="/movies/<%= @movie.id %>/edit">Edit Movie</a><br>
+<small><a href="/movies/<%= @movie.id %>/edit">Edit Movie</a></small><br>
 
 <form method="POST" action="/movies/<%= @movie.id %>/delete">
     <input type="hidden" name="_method" value="DELETE">
@@ -14,6 +14,9 @@ Summary: <%= @movie.summary %><br><br>
 <% end %>
 <br>
 <h3>Comments:</h3>
+<% if flash(:message) %>
+  <%= flash[:message] %>
+<% end %> 
 Add new comment: <br>
 <form method="POST" action="/comments">
     <input type="hidden" name="movie_id" value="<%=@movie.id%>">
@@ -21,3 +24,8 @@ Add new comment: <br>
     <textarea name="content" rows="5" cols="30"></textarea>
     <br><input type="submit" value="Add comment">
 </form>
+<br>
+<li><% @movie.comments.each do |comment| %>
+    <%= comment.user.username %>: <%= comment.content %><br>
+    <% end %>
+</li>
