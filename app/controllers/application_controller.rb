@@ -25,6 +25,10 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
 
+    def admin_account
+      @current_user.account_type == "admin"
+    end
+
   end
 
   private 

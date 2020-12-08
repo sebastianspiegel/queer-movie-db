@@ -36,6 +36,7 @@ class UsersController < ApplicationController
             flash[:message] = "Invalid signup. Username or password cannot be blank. Username must be unique."
             redirect '/signup'
         else
+            user.account_type = "user"
             user.save 
             session[:user_id] = user.id
             redirect '/'
