@@ -1,6 +1,7 @@
 <h2>Edit <%= @movie.title %>:</h2>
 
 <form action='/movies/<%=@movie.id%>' method="POST">
+    <input type="hidden" name="_method" value="PATCH">
     Title: <input type="text" name="title" value="<%= @movie.title %>"><br>
     Year: <input type="text" name="year" value="<%= @movie.year %>"><br>
     Short summary: <input type="text" name="summary" value="<%= @movie.summary %>"><br>

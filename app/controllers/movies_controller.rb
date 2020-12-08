@@ -36,7 +36,15 @@ class MoviesController < ApplicationController
     end
 
     patch '/movies/:id' do
-        binding.pry 
+        redirect_if_not_logged_in
+        movie = Movie.find(params[:id])
+        if params.values.any? &:empty?
+            redirect "movies/#{movie.id}"
+        else
+            params.delete("_method")
+            movie.update(params)
+            redirect "/movies/#{movie.id}"
+        end
     end
 
     delete '/movies/:id/delete' do
