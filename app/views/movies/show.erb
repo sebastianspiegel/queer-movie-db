@@ -13,20 +13,21 @@ Summary: <%= @movie.summary %><br><br>
 </form>
 <% end %>
 <br>
-<h3>Additional details:</h3>
 <% if flash(:message) %>
   <%= flash[:message] %>
 <% end %> 
+<h3>Additional details:</h3>
 
 <br>
 <li><% @movie.comments.each do |comment| %>
     <li><strong><%= comment.user.username %>:</strong> <%= comment.content %><br><br></li>
     <% if comment.user_id == session[:user_id] || User.find(1).id == session[:user_id]%>
+    <small><a href="/comments/<%= comment.id %>/edit">Edit detail</a></small>
     <form method="POST" action="/comments/<%= comment.id %>/delete">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete Detail">
     </form>
-    <a href="/comments/<%= comment.id %>/edit>Edit comment</a><br>
+    <br><br>
     <% end %>
     <% end %>
 </li>

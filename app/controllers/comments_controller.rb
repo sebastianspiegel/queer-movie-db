@@ -13,8 +13,20 @@ class CommentsController < ApplicationController
         end
     end
 
-    post '/comments/:id' do
-        binding.pry
+    get '/comments/:id/edit' do
+        redirect_if_not_logged_in
+        @comment = Comment.find(params[:id])
+        erb :'/comments/edit'
+    end
+
+    patch '/comments/:id' do
+        comment = Comment.find(params[:id])
+        if comment.user != current_user
+            flash[:message] = "You cannot edit this comment."
+        else
+            comment.update(content: (params[:content]))
+        end
+        redirect "/movies/#{comment.movie_id}"
     end
 
     delete '/comments/:id/delete' do

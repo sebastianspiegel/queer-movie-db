@@ -1,0 +1,9 @@
+<h2>Edit details</h2>
+<%= @comment.movie.title %>
+<form method="POST" action="/comments/<%= @comment.id %>">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" name="movie_id" value="<%=@comment.movie_id%>">
+    <textarea name="content" rows="10" cols="50"><%= @comment.content %></textarea>
+    <br><input type="submit" value="Edit detail">
+</form>
+<a href="/movies/<%= @comment.movie_id %>">Cancel edit</a>
