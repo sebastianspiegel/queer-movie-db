@@ -12,3 +12,10 @@ Summary: <%= @movie.summary %><br><br>
     <input type="submit" value="Delete Movie">
 </form>
 <% end %>
+<br>
+<h3>Comments:</h3>
+Add new comment: <br>
+<form method="POST" action="/comments">
+    <textarea name="summary" rows="5" cols="30"></textarea>
+    <br><input type="submit" value="Add comment">
+</form>
