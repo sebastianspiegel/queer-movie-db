@@ -19,7 +19,7 @@
         <%= yield %>
 
       <footer class="branding">
-        <a href="/">Homepage</a> <% if session[:user_id] %>| <a href="/users/<%=User.find(session[:user_id])%>">Profile</a><% end %>
+        <a href="/">Homepage</a> <% if session[:user_id] %>| <a href="/users/<%=User.find(session[:user_id]).slug%>">Profile</a><% end %>
         <br><br>
         <small>&copy; 2020 <strong>Sebastian Spiegel</strong></small>
       </footer>

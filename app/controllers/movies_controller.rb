@@ -39,7 +39,6 @@ class MoviesController < ApplicationController
     end
 
     patch '/movies/:id' do
-        #check for correct user 
         redirect_if_not_logged_in
         movie = Movie.find(params[:id])
         if current_user.id != movie.user_id 
