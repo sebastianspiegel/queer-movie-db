@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
     get '/login' do
         if logged_in?
             redirect '/'
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id 
             redirect "/users/#{user.slug}"
         else
+            flash[:message] = "Invalid login. Try again."
             redirect '/login'
         end
     end
@@ -31,6 +33,7 @@ class UsersController < ApplicationController
         user = User.new(params)
         #user.password.blank? || user.username.blank? || User.find_by_username(params[:username])
         if user.invalid?
+            flash[:message] = "Invalid signup. Username or password cannot be blank. Username must be unique."
             redirect '/signup'
         else
             user.save 
@@ -42,6 +45,7 @@ class UsersController < ApplicationController
     post '/logout' do
         if logged_in?
             session.destroy
+            flash[:message] = "You are now logged out!"
             redirect '/login'
         else
             redirect '/'
