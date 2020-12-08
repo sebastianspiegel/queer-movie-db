@@ -12,4 +12,20 @@ class CommentsController < ApplicationController
         end
     end
 
+    post '/comments/:id' do
+        binding.pry
+    end
+
+    delete '/comments/:id/delete' do
+        redirect_if_not_logged_in
+        comment = Comment.find(params[:id])
+        if current_user.id != comment.user_id
+            flash[:message] = "You cannot delete that comment."
+            redirect "/movies/#{comment.movie_id}"
+        else
+            comment.delete
+            redirect "/movies/#{comment.movie_id}"
+        end
+    end
+
 end

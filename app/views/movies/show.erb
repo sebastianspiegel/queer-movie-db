@@ -13,19 +13,28 @@ Summary: <%= @movie.summary %><br><br>
 </form>
 <% end %>
 <br>
-<h3>Comments:</h3>
+<h3>Additional details:</h3>
 <% if flash(:message) %>
   <%= flash[:message] %>
 <% end %> 
-Add new comment: <br>
+
+<br>
+<li><% @movie.comments.each do |comment| %>
+    <li><strong><%= comment.user.username %>:</strong> <%= comment.content %><br><br></li>
+    <% if comment.user_id == session[:user_id] || User.find(1).id == session[:user_id]%>
+    <form method="POST" action="/comments/<%= comment.id %>/delete">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Detail">
+    </form>
+    <a href="/comments/<%= comment.id %>/edit>Edit comment</a><br>
+    <% end %>
+    <% end %>
+</li>
+<br>
+Add new detail: <br>
 <form method="POST" action="/comments">
     <input type="hidden" name="movie_id" value="<%=@movie.id%>">
     <input type="hidden" name="user_id" value="<%=session[:user_id]%>">
     <textarea name="content" rows="5" cols="30"></textarea>
-    <br><input type="submit" value="Add comment">
+    <br><input type="submit" value="Add detail">
 </form>
-<br>
-<li><% @movie.comments.each do |comment| %>
-    <%= comment.user.username %>: <%= comment.content %><br>
-    <% end %>
-</li>

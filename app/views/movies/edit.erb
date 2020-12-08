@@ -1,7 +1,7 @@
-<h2>Edit <%= @movie.title %>:</h2>
+<h2>Edit <%= @movie.title %>:</h2> 
 <% if flash(:message) %>
   <%= flash[:message] %>
-<% end %> 
+<% end %> <!-- > -->
 
 <form action='/movies/<%=@movie.id%>' method="POST">
     <input type="hidden" name="_method" value="PATCH">
