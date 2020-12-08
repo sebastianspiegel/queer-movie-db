@@ -1,4 +1,4 @@
-class Show < ActiveRecord::Base
+class Movie < ActiveRecord::Base
     belongs_to :user
 
     def slug
@@ -7,7 +7,7 @@ class Show < ActiveRecord::Base
     end
     
     def self.find_by_slug(slug)
-        Show.all.find{|show| show.slug == slug}
+        Movie.all.find{|show| show.slug == slug}
     end
 
 end

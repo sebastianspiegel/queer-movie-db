@@ -1,0 +1,13 @@
+<h1><%= @movie.title %></h1>
+
+Year: <%= @movie.year %><br>
+Summary: <%= @movie.summary %><br><br>
+
+<% if @movie.user_id == session[:user_id] %>
+<a href="/movies/<%= @movie.id %>/edit">Edit Movie</a><br>
+
+<form method="POST" action="/movies/<%= @movie.id %>/delete">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Movie">
+</form>
+<% end %>
