@@ -16,6 +16,7 @@ Summary: <%= @movie.summary %><br><br>
 <h3>Comments:</h3>
 Add new comment: <br>
 <form method="POST" action="/comments">
-    <textarea name="summary" rows="5" cols="30"></textarea>
+    <input type="hidden" name="movie_id" value="<%=@movie.id%>">
+    <textarea name="content" rows="5" cols="30"></textarea>
     <br><input type="submit" value="Add comment">
 </form>
