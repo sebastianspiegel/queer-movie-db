@@ -32,15 +32,19 @@ class MoviesController < ApplicationController
         if @movie.user_id == session[:user_id]
             erb :'movies/edit'
         else
+            flash[:message] = "You cannot edit that movie."
             redirect '/movies'
         end
     end
 
     patch '/movies/:id' do
-        #check for correct user
+        #check for correct user 
         redirect_if_not_logged_in
         movie = Movie.find(params[:id])
-        if params.values.any? &:empty?
+        if current_user.id != movie.user_id 
+            flash[:message] = "You cannot edit that movie."
+            redirect '/movies'
+        elsif params.values.any? &:empty?
             redirect "movies/#{movie.id}"
         else
             params.delete("_method")
@@ -50,10 +54,14 @@ class MoviesController < ApplicationController
     end
 
     delete '/movies/:id/delete' do
-        #check for correct user
         redirect_if_not_logged_in
         movie = Movie.find(params[:id])
-        movie.delete 
-        redirect '/movies'
+        if current_user.id != movie.user_id 
+            flash[:message] = "You cannot edit that movie."
+            redirect '/movies'
+        else
+            movie.delete 
+            redirect '/movies'
+        end
     end
 end
