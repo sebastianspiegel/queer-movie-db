@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
     get '/movies/:id/edit' do
         redirect_if_not_logged_in
         @movie = Movie.find(params[:id])
-        if @movie.user_id == session[:user_id]
+        if @movie.user_id == session[:user_id] || User.find_by_username("admin").id == session[:user_id]
             erb :'movies/edit'
         else
             flash[:message] = "You cannot edit that movie."
@@ -41,11 +41,12 @@ class MoviesController < ApplicationController
     patch '/movies/:id' do
         redirect_if_not_logged_in
         movie = Movie.find(params[:id])
-        if current_user.id != movie.user_id 
+        if current_user.id != movie.user_id && current_user.id != User.find_by_username("admin").id 
             flash[:message] = "You cannot edit that movie."
             redirect '/movies'
         elsif params.values.any? &:empty?
-            redirect "movies/#{movie.id}"
+            flash[:message] = "Cannot have empty fields."
+            redirect "movies/#{movie.id}/edit"
         else
             params.delete("_method")
             movie.update(params)

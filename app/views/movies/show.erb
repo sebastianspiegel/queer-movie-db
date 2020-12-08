@@ -4,7 +4,7 @@ Genre: <%= @movie.genre %><br>
 Year: <%= @movie.year %><br>
 Summary: <%= @movie.summary %><br><br>
 
-<% if @movie.user_id == session[:user_id] %>
+<% if @movie.user_id == session[:user_id] || User.find(1).id == session[:user_id]%>
 <small><a href="/movies/<%= @movie.id %>/edit">Edit Movie</a></small><br>
 
 <form method="POST" action="/movies/<%= @movie.id %>/delete">
