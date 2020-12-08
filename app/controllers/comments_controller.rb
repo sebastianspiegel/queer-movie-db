@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
             flash[:message] = "Must enter text to leave a comment."
             redirect "/movies/#{params[:movie_id]}"
         else
+            @comment.user_id = session[:user_id] 
             @comment.save
             redirect "/movies/#{params[:movie_id]}"
         end
