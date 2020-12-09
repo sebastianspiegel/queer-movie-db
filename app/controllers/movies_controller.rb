@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
 
     get '/movies' do
+        @movies = Movie.all.sort_by {|movie| movie.title}
+        #@movies = Movie.all 
         erb :'/movies/index'
     end
 
@@ -22,9 +24,13 @@ class MoviesController < ApplicationController
         end
     end
 
+    post '/movies/:id/favorite' do
+        binding.pry
+    end
+
     get '/movies/:id' do
-        @movie = Movie.find(params[:id])
-        erb :'/movies/show'
+        @movie = Movie.find(params[:id]) 
+        erb :'/movies/show' 
     end
 
     get '/movies/:id/edit' do

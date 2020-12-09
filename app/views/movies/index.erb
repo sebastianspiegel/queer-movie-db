@@ -4,6 +4,6 @@
   <%= flash[:message] %><br><br>
 <% end %> 
 
-<% Movie.all.each do |movie| %>
+<% @movies.each do |movie| %>
     <li><a href="/movies/<%=movie.id%>"><%= movie.title %></a></a></li>
   <% end %>
