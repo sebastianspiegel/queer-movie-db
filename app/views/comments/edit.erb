@@ -6,4 +6,6 @@
     <textarea name="content" rows="10" cols="50"><%= @comment.content %></textarea>
     <br><input type="submit" value="Edit detail">
 </form>
-<a href="/movies/<%= @comment.movie_id %>">Cancel edit</a>
+<form method="GET" action="/movies/<%= @comment.movie_id %>">
+    <input type="submit" value="Cancel edit">
+</form>
