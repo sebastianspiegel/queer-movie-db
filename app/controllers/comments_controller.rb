@@ -20,8 +20,9 @@ class CommentsController < ApplicationController
     end
 
     patch '/comments/:id' do
+        redirect_if_not_logged_in
         comment = Comment.find(params[:id])
-        if comment.user != current_user
+        if comment.user != current_user && !admin_account 
             flash[:message] = "You cannot edit this comment."
         else
             comment.update(content: (params[:content]))
@@ -32,7 +33,7 @@ class CommentsController < ApplicationController
     delete '/comments/:id/delete' do
         redirect_if_not_logged_in
         comment = Comment.find(params[:id])
-        if current_user.id != comment.user_id
+        if current_user.id != comment.user_id && !admin_account 
             flash[:message] = "You cannot delete that comment."
             redirect "/movies/#{comment.movie_id}"
         else

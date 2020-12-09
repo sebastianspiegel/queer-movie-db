@@ -29,9 +29,7 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        #is user savable? 
         user = User.new(params)
-        #user.password.blank? || user.username.blank? || User.find_by_username(params[:username])
         if user.invalid?
             flash[:message] = "Invalid signup. Username or password cannot be blank. Username must be unique."
             redirect '/signup'

@@ -57,7 +57,7 @@ class MoviesController < ApplicationController
     delete '/movies/:id/delete' do
         redirect_if_not_logged_in
         movie = Movie.find(params[:id])
-        if current_user.id != movie.user_id 
+        if current_user.id != movie.user_id && !admin_account
             flash[:message] = "You cannot edit that movie."
             redirect '/movies'
         else
