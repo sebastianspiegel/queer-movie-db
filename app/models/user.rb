@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
-    has_many :shows 
+    has_many :movies 
     has_many :comments
+    has_many :favorites
+    #has_many :favorite_movies, through: :favorites, source: :movie 
     has_secure_password
     validates :username, uniqueness: true, presence: true
 

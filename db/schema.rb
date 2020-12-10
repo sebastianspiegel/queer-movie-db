@@ -11,12 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201208181052) do
+ActiveRecord::Schema.define(version: 20201210163149) do
 
   create_table "comments", force: :cascade do |t|
     t.string  "content"
     t.integer "movie_id"
     t.integer "user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -30,7 +35,6 @@ ActiveRecord::Schema.define(version: 20201208181052) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "account_type"
-    t.string "favorite_movies"
     t.string "password_digest"
   end
 
