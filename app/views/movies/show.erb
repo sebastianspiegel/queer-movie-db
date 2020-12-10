@@ -10,11 +10,7 @@ Genre: <%= @movie.genre %><br>
 Year: <%= @movie.year %><br>
 Summary: <%= @movie.summary %><br>
 <br>
-<% if logged_in? %>
-    <form method="POST" action="/movies/<%= @movie.id %>/favorite">
-        <input type="submit" value="Add to favorites">
-    </form>
-<% end %>
+
 
 <% if @movie.user_id == session[:user_id] || User.find(1).id == session[:user_id]%>
     <form method="GET" action="/movies/<%= @movie.id %>/edit">

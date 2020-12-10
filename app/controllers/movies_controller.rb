@@ -24,10 +24,6 @@ class MoviesController < ApplicationController
         end
     end
 
-    post '/movies/:id/favorite' do
-        binding.pry
-    end
-
     get '/movies/:id' do
         @movie = Movie.find(params[:id]) 
         erb :'/movies/show' 
