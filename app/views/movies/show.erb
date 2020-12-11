@@ -43,11 +43,13 @@ Summary: <%= @movie.summary %><br>
     <% end %>
 </li>
 
+<% if session[:user_id] %>
 <h2>Add new detail: </h2><br>
 <form method="POST" action="/comments">
     <input type="hidden" name="movie_id" value="<%=@movie.id%>">
     <textarea name="content" rows="5" cols="30"></textarea>
     <br><input type="submit" value="Add detail">
 </form>
+<% end %>
 
 </body>
