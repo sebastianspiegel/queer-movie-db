@@ -3,6 +3,9 @@ class Movie < ActiveRecord::Base
     has_many :comments
     #has_many :favorites, through: :users 
     validates :title, uniqueness: true, presence: true
+    validates :genre, presence: true
+    validates :year, presence: true
+    validates :summary, presence: true
 
 
     def slug

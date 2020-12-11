@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
         redirect_if_not_logged_in
         @movie = Movie.new(params)
         if @movie.invalid?
-            flash[:message] = "That movie already exists in this database."
+            flash[:message] = "That movie already exists in this database, or there was incomplete information."
             redirect '/movies/new'
         else
             @movie.user = current_user
