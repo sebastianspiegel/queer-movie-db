@@ -9,9 +9,9 @@
     Genre: <input type="text" name="genre" value="<%= @movie.genre %>"><br>
     Year: <input type="text" name="year" value="<%= @movie.year %>"><br>
     Short summary: <br><textarea name="summary" rows="10" cols="50"><%= @movie.summary %></textarea><br>
-    <input type="submit" value="Edit Movie">
+    <input type="submit" value="Save Edit">
 </form>
 
 <form method="GET" action="/movies/<%=@movie.id%>">
-    <input type="submit" value="Cancel edit">
+    <input type="submit" value="Cancel Edit">
 </form>

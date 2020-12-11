@@ -4,8 +4,8 @@
     <input type="hidden" name="_method" value="PATCH">
     <input type="hidden" name="movie_id" value="<%=@comment.movie_id%>">
     <textarea name="content" rows="10" cols="50"><%= @comment.content %></textarea>
-    <br><input type="submit" value="Edit detail">
+    <br><input type="submit" value="Save Edit">
 </form>
 <form method="GET" action="/movies/<%= @comment.movie_id %>">
-    <input type="submit" value="Cancel edit">
+    <input type="submit" value="Cancel Edit">
 </form>
