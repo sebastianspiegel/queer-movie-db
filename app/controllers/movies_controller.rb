@@ -32,7 +32,7 @@ class MoviesController < ApplicationController
     get '/movies/:id/edit' do
         redirect_if_not_logged_in
         @movie = Movie.find(params[:id])
-        if @movie.user_id == session[:user_id] || admin_account
+        if allowed_to_edit
             erb :'movies/edit'
         else
             flash[:message] = "You cannot edit that movie."

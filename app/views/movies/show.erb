@@ -12,7 +12,7 @@ Summary: <%= @movie.summary %><br>
 <br>
 
 
-<% if @movie.user_id == session[:user_id] || User.find(1).id == session[:user_id]%>
+<% if @movie.user_id == session[:user_id] || admin_account %>
     <form method="GET" action="/movies/<%= @movie.id %>/edit">
         <input type="submit" value="Edit Movie">
     </form>
@@ -31,7 +31,7 @@ Summary: <%= @movie.summary %><br>
 
 <li><% @movie.comments.each do |comment| %>
     <li><strong><%= comment.user.username %>:</strong> <%= comment.content %><br><br>
-    <% if comment.user_id == session[:user_id] || User.find(1).id == session[:user_id]%>
+    <% if comment.user_id == session[:user_id] || admin_account %>
         <form method="GET" action="/comments/<%= comment.id %>/edit">
             <input type="submit" value="Edit Detail">
         </form>
