@@ -4,10 +4,10 @@ Is it queer? is a database of LGBT films managed by community input.
 
 ## Installation
 
-After downloading, navigate into the repo and excute:
-    ``` bundle install
+After downloading, navigate into the repo and execute:
+    ``` bundle install ```
 Then execute: 
-    ``` shotgun
+    ``` shotgun ```
 Navigate to localhost:9393/ to use the site.
 
 ## Development 
