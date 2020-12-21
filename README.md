@@ -4,22 +4,20 @@ Is it queer? is a database of LGBT films managed by community input.
 
 ## Installation
 
-To run:
-```bundle install
-rake db:migrate
-rake db:seed
-```
+After downloading, navigate into the repo and excute:
+    $ bundle install
+Then execute: 
+    $ shotgun
+Navigate to localhost:9393/ to use the site.
 
+## Development 
+
+This site is currently under development. Future features include: being able to save a list of favorite films. 
 
 ## Contributing
 
+Bug reports and pull requests are welcome on GitHub at https://github.com/sebastianspiegel/queer-movie-db/. 
 
 ## License
 
-#Learn.co Educational Content License
-
-Copyright (c) 2015 Flatiron School, Inc
-
-The Flatiron School, Inc. owns this Educational Content. However, the Flatiron School supports the development and availability of educational materials in the public domain. Therefore, the Flatiron School grants Users of the Flatiron Educational Content set forth in this repository certain rights to reuse, build upon and share such Educational Content subject to the terms of the Educational Content License set forth here (http://learn.co/content-license). You must read carefully the terms and conditions contained in the Educational Content License as such terms govern access to and use of the Educational Content.
-
-Flatiron School is willing to allow you access to and use of the Educational Content only on the condition that you accept all of the terms and conditions contained in the Educational Content License set forth here (http://learn.co/content-license). By accessing and/or using the Educational Content, you are agreeing to all of the terms and conditions contained in the Educational Content License. If you do not agree to any or all of the terms of the Educational Content License, you are prohibited from accessing, reviewing or using in any way the Educational Content.
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

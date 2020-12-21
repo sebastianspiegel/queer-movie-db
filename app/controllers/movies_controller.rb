@@ -1,8 +1,8 @@
 class MoviesController < ApplicationController
 
     get '/movies' do
+        redirect_if_not_logged_in
         @movies = Movie.all.sort_by {|movie| movie.title}
-        #@movies = Movie.all 
         erb :'/movies/index'
     end
 
@@ -25,6 +25,7 @@ class MoviesController < ApplicationController
     end
 
     get '/movies/:id' do
+        redirect_if_not_logged_in
         @movie = Movie.find(params[:id]) 
         erb :'/movies/show' 
     end
